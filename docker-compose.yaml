@@ -171,8 +171,6 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
-    networks:
-      - airflow-network
 
   airflow-scheduler:
     <<: *airflow-common
@@ -188,8 +186,6 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
-    networks:
-      - airflow-network
 
   airflow-worker:
     <<: *airflow-common
@@ -213,8 +209,6 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
-    networks:
-      - airflow-network
 
   airflow-triggerer:
     <<: *airflow-common
@@ -230,8 +224,6 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
-    networks:
-      - airflow-network
 
   airflow-init:
     <<: *airflow-common
@@ -297,8 +289,6 @@ services:
     user: "0:0"
     volumes:
       - ${AIRFLOW_PROJ_DIR:-.}:/sources
-    networks:
-      - airflow-network
 
   airflow-cli:
     <<: *airflow-common
@@ -343,8 +333,6 @@ services:
       - "7077:7077"  # Spark master
     environment:
       - SPARK_MODE=master
-
-
 
   spark-worker:
     <<: *spark-common
