@@ -1,6 +1,6 @@
 ![alt text](image.png)
 
-# Stock Price Pipeline with Airflow, MinIO, Spark, PostgreSQL, and Metabase
+# Stock Price Pipeline with Airflow, MinIO, Spark, PostgreSQL
 
 This repository contains an Airflow DAG that orchestrates a data pipeline for fetching, processing, and storing stock prices. The pipeline integrates with various tools and services, including Yahoo Finance API, MinIO, Apache Spark, PostgreSQL with notifications sent via Slack.
 
