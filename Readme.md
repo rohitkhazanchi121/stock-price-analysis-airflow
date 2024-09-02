@@ -41,48 +41,54 @@ The pipeline follows these steps:
 
 # Setup
 
-Clone the repository:
+#### 1. Clone the repository:
 
 bash
 ```
-git clone https://github.com/yourusername/stock-price-pipeline.git
+git clone https://github.com/rohitkhazanchi121/stock-price-analysis-airflow.git
 ```
-cd stock-price-pipeline
-Set up environment variables:
 
-Create an .env file with the necessary environment variables, such as MinIO credentials, PostgreSQL credentials, and Slack webhook URL.
+#### 2. Set up environment variables:
 
-bash
-Copy code
-MINIO_ACCESS_KEY=minio
-MINIO_SECRET_KEY=minio123
-POSTGRES_USER=your_postgres_user
-POSTGRES_PASSWORD=your_postgres_password
-SLACK_WEBHOOK_URL=your_slack_webhook_url
-Build and run Docker containers:
+All credential to connect to airflow UI, Postgres, minio are defined in docker-compose.yaml.
 
-bash
-Copy code
-docker-compose up --build
-Access Airflow:
+#### 3. Build and run Docker containers
+```
+docker-compose up -d --build
+```
+
+#### 4. Access Airflow:
 
 Airflow's web UI will be available at http://localhost:8080. Log in using the default credentials (airflow/airflow).
 
-Trigger the DAG:
+#### 5.Access Spark
 
-Trigger the stock_price_pipeline DAG from the Airflow UI to start the process.
+Spark UI will be available at http://localhost:9090.
 
-Project Structure
-dags/: Contains the Airflow DAG definition.
-scripts/: Custom Python scripts used in the pipeline.
-docker-compose.yml: Docker Compose file to set up the environment.
-Dockerfile: Dockerfile for building custom images.
-config/: Configuration files and environment variables.
-README.md: Project documentation.
-Usage
+#### 5.Access Postgres
+
+Can we accessed using IDE with Postgress connector, with host as localhost, port 5432. Username-password-database (airflow-airflow-airflow)
+
+or from command line using
+
+`docker exec -it <<postgres-container-name>> psql -U airflow` 
+
+#### 7. Trigger the DAG:
+
+Trigger the stock_market DAG from the Airflow UI to start the process.
+
+# Project Structure
+* dags/: Contains the Airflow DAG definition.
+* include/: Custom Python scripts used in the pipeline.
+* docker-compose.yml: Docker Compose file to set up the environment.
+* Dockerfile: Dockerfile for building custom images.
+* config/: Configuration files and environment variables.
+* README.md: Project documentation.
+
+
+# Usage
 After setting up the environment, you can:
 
 Monitor the DAG execution via Airflow's web UI.
 View the processed data in PostgreSQL.
-Visualize and analyze the data in Metabase.
 Receive notifications in Slack.
