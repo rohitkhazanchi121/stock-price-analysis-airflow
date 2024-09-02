@@ -78,8 +78,10 @@ or from command line using
 Trigger the stock_market DAG from the Airflow UI to start the process.
 
 # Project Structure
+
 * dags/: Contains the Airflow DAG definition.
 * include/: Custom Python scripts used in the pipeline.
+* spark/: Contains docker file which create reads the python file and create a spark submit on spark cluster.
 * docker-compose.yml: Docker Compose file to set up the environment.
 * Dockerfile: Dockerfile for building custom images.
 * config/: Configuration files and environment variables.
