@@ -1,0 +1,8 @@
+assignment1.py
+taskflow_operator.py
+taskflow.py
+.minio.sys
+stock-market
+logs/*
+
+__pycache__
